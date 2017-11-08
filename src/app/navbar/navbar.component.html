@@ -11,12 +11,14 @@
       </li>
 
       <div ngbDropdown class="d-inline-block">
-        <a class="nav-link dropdown-toggle" id="dropdownBasic1" ngbDropdownToggle>Username</a>
+        <a class="nav-link dropdown-toggle" id="dropdownBasic1" ngbDropdownToggle>{{ name }}</a>
         <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
-          <button class="dropdown-item">My Orders</button>
-          <button class="dropdown-item">Manage Orders</button>
-          <button class="dropdown-item">Manage Products</button>
-          <button class="dropdown-item">Log Out</button>
+          <a class="dropdown-item" routerLink="/my-orders">My Orders</a>
+          <ng-container *ngIf="isAdmin()">
+            <a class="dropdown-item" routerLink="/manage-orders">Manage Orders</a>
+            <a class="dropdown-item" routerLink="/manage-products">Manage Products</a>
+          </ng-container>
+          <a class="dropdown-item" routerLink="/login" (click)="logout()">Log Out</a>
         </div>
       </div>
 
