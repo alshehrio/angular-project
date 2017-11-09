@@ -9,7 +9,7 @@ import { DataTableResource } from 'angular-4-data-table/src';
   providers: [ProductService]
 })
 export class ManageProductsComponent implements OnInit {
-  itemsResource = null;
+  itemsResource: DataTableResource<any>;
   items = [];
   itemCount: number;
 
@@ -24,6 +24,11 @@ export class ManageProductsComponent implements OnInit {
 
   reloadItems(params) {
     this.itemsResource.query(params).then(items => this.items = items);
+  }
+
+  search(text) {
+    const filteredItems = this.items.filter(item => item.title === text);
+    this.itemsResource = new DataTableResource(filteredItems);
   }
 
 }

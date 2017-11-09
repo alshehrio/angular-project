@@ -1,3 +1,5 @@
+import { EditProductComponent } from './../edit-product/edit-product.component';
+import { CreateProductComponent } from './../create-product/create-product.component';
 import { AdminGuard } from './../guards/admin.guard';
 import { AuthGuard } from './../guards/auth.guard';
 import { LoginComponent } from './../login/login.component';
@@ -22,6 +24,8 @@ import { NotFoundComponent } from '../not-found/not-found.component';
       { path: 'my-orders', component: MyOrdersComponent, canActivate: [AuthGuard] },
       { path: 'manage-orders', component: ManageOrdersComponent, canActivate: [AuthGuard, AdminGuard] },
       { path: 'manage-products', component: ManageProductsComponent, canActivate: [AuthGuard, AdminGuard] },
+      { path: 'create-product', component: CreateProductComponent },
+      { path: 'edit-product/:id', component: EditProductComponent },
       { path: '**', component: NotFoundComponent }
     ])
   ],

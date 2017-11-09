@@ -21,6 +21,8 @@ import { LoginComponent } from './login/login.component';
 import { HttpModule } from '@angular/http';
 import { FormsModule } from '@angular/forms';
 import { DataTableModule } from 'angular-4-data-table/src/index';
+import { CreateProductComponent } from './create-product/create-product.component';
+import { EditProductComponent } from './edit-product/edit-product.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +34,9 @@ import { DataTableModule } from 'angular-4-data-table/src/index';
     ManageOrdersComponent,
     ManageProductsComponent,
     MyOrdersComponent,
-    LoginComponent
+    LoginComponent,
+    CreateProductComponent,
+    EditProductComponent
   ],
   imports: [
     BrowserModule,

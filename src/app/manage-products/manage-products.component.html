@@ -1,9 +1,13 @@
+<button class="btn btn-primary" routerLink="/create-product">New Product</button>
+
 <data-table [items]="items" (reload)="reloadItems($event)" [itemCount]="itemCount" *ngIf="itemsResource">
   <data-table-column property="title" header="Title" [sortable]="true">
   </data-table-column>
   <data-table-column property="price" header="Price" [sortable]="true">
   </data-table-column>
   <data-table-column header="Edit">
-    <ng-template #dataTableCell let-item="item"><a routerLink="/product/1">Edit</a></ng-template>
+    <ng-template #dataTableCell let-item="item"><a routerLink="/edit-product/{{ item.id }}">Edit</a></ng-template>
   </data-table-column>
 </data-table>
+
+<input type="text" (keyup)="search($event.target.value)">

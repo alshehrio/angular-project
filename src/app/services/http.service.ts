@@ -16,4 +16,14 @@ export class HttpService {
       .map(response => response.json());
   }
 
+  update(url, body) {
+    return this.http.put(url, body)
+      .map(response => response.json());
+  }
+
+  delete(url) {
+    return this.http.delete(url)
+      .map(response => response.json());
+  }
+
 }
