@@ -1,0 +1,18 @@
+<ul class="list-group">
+  <li 
+    class="list-group-item"
+    [routerLinkActive]="'active'"
+    [routerLinkActiveOptions]="{ exact: true }"
+    [routerLink]="'/'">
+    All
+  </li>
+
+  <li
+    class="list-group-item" 
+    [routerLinkActive]="'active'"
+    *ngFor="let category of categories$ | async"
+    [routerLink]="'/'"
+    [queryParams]="{ category: category.id }">
+    {{ category.name }}
+  </li>
+</ul>
