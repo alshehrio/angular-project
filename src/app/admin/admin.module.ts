@@ -2,19 +2,18 @@ import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { DataTableModule } from 'angular-4-data-table/src/index';
 
-import { AdminGuard } from './guards/admin.guard';
 import { AuthGuard } from '../shared/guards/auth.guard';
 import { SharedModule } from '../shared/shared.module';
-import { CreateProductComponent } from './components/create-product/create-product.component';
-import { EditProductComponent } from './components/edit-product/edit-product.component';
 import { OrdersComponent } from './components/orders/orders.component';
+import { ProductFormComponent } from './components/product-form/product-form.component';
 import { ProductsComponent } from './components/products/products.component';
+import { AdminGuard } from './guards/admin.guard';
 
 @NgModule({
   imports: [
     RouterModule.forChild([
-      { path: 'create-product', component: CreateProductComponent },
-      { path: 'edit-product/:id', component: EditProductComponent },
+      { path: 'create-product', component: ProductFormComponent, canActivate: [AuthGuard, AdminGuard] },
+      { path: 'edit-product/:id', component: ProductFormComponent, canActivate: [AuthGuard, AdminGuard] },
       { path: 'manage-products', component: ProductsComponent, canActivate: [AuthGuard, AdminGuard] },
       { path: 'manage-orders', component: OrdersComponent, canActivate: [AuthGuard, AdminGuard] }
     ]),
@@ -22,8 +21,7 @@ import { ProductsComponent } from './components/products/products.component';
     SharedModule
   ],
   declarations: [
-    CreateProductComponent,
-    EditProductComponent,
+    ProductFormComponent,
     ProductsComponent,
     OrdersComponent
   ],

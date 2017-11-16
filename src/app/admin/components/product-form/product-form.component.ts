@@ -7,15 +7,15 @@ import { Observable } from 'rxjs/Observable';
 
 import { CategoryService } from '../../../shared/services/category.service';
 import { ProductService } from '../../../shared/services/product.service';
-import { Product } from './../../../shared/models/product.model';
+import { Product } from '../../../shared/models/product.model';
 
 @Component({
-  selector: 'app-edit-product',
-  templateUrl: './edit-product.component.html',
-  styleUrls: ['./edit-product.component.css'],
+  selector: 'app-product-form',
+  templateUrl: './product-form.component.html',
+  styleUrls: ['./product-form.component.css'],
   providers: [CategoryService, ProductService]
 })
-export class EditProductComponent implements OnInit {
+export class ProductFormComponent implements OnInit {
   categories: any[];
   product: Product;
 
