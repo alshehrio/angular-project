@@ -6,5 +6,6 @@
 export const environment = {
   production: false,
   apiKey: 'AIzaSyBPUKGPMmaJsVMqq-KaY56Kn5TPLAKOqks',
-  firebaseUrl: 'https://fir-demo-524e3.firebaseio.com/'
+  firebaseUrl: 'https://fir-demo-524e3.firebaseio.com/',
+  loginUrl: 'https://www.googleapis.com/identitytoolkit/v3/relyingparty/verifyPassword?key=AIzaSyBPUKGPMmaJsVMqq-KaY56Kn5TPLAKOqks'
 };

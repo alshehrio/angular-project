@@ -1,23 +1,13 @@
-import { ActivatedRoute } from '@angular/router';
-import { ProductService } from '../../../shared/services/product.service';
+import { Component, Input } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
-import { Component, OnInit, Input } from '@angular/core';
+
+import { Product } from './../../../shared/models/product.model';
 
 @Component({
   selector: 'app-products-grid',
   templateUrl: './products-grid.component.html',
-  styleUrls: ['./products-grid.component.css'],
-  providers: [ProductService]
+  styleUrls: ['./products-grid.component.css']
 })
-export class ProductsGridComponent implements OnInit {
-  products: Observable<any[]>;
-
-  constructor(private productService: ProductService, private route: ActivatedRoute) { }
-
-  ngOnInit() {
-    this.products =
-      this.route.queryParams
-        .map(params => params['category'] ? { orderBy: '"category"', equalTo: `"${params['category']}"` } : {})
-        .switchMap(filter => this.productService.list(filter));
-  }
+export class ProductsGridComponent {
+  @Input() products$: Observable<Product[]>;
 }

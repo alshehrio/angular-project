@@ -1,3 +1,5 @@
+import { CategoryService } from './services/category.service';
+import { ProductService } from './services/product.service';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
@@ -30,7 +32,9 @@ import { UserService } from './services/user.service';
     HttpService,
     AuthGuard,
     LoginService,
-    UserService
+    UserService,
+    ProductService,
+    CategoryService
   ]
 })
 export class SharedModule { }

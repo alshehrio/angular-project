@@ -1,0 +1,13 @@
+<div class="container">
+  <div class="row">
+    <div class="col-3">
+      <app-products-filter [categories$]="categories$"></app-products-filter>
+    </div>
+
+    <div class="col-9">
+      <div class="row">
+        <app-products-grid [products$]="products$"></app-products-grid>
+      </div>
+    </div>
+  </div>
+</div>

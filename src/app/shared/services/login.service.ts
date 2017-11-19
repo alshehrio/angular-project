@@ -1,27 +1,26 @@
-import { HttpService } from './http.service';
 import 'rxjs/add/operator/switchMap';
 
 import { Injectable } from '@angular/core';
 
-import { environment } from '../../../environments/environment';
 import * as ls from '../utils/localstorage.util';
+import { HttpService } from './http.service';
 import { UserService } from './user.service';
+import { environment } from '../../../environments/environment';
 
 @Injectable()
 export class LoginService {
   private loginUrl;
 
   constructor(private http: HttpService, private userService: UserService) {
-    this.loginUrl = 'https://www.googleapis.com/identitytoolkit/v3/relyingparty/verifyPassword?key=AIzaSyBPUKGPMmaJsVMqq-KaY56Kn5TPLAKOqks';
+    this.loginUrl = environment.loginUrl;
   }
 
   login(email: string, password) {
     return this.http.post(this.loginUrl, { email, password, returnSecureToken: true })
-      .switchMap(login => {
-        this.token = login.idToken;
-        return this.userService.get(email.split('@')[0]);
-      })
-      .map(userData => this.userData = userData);
+      .map(login => login.idToken)
+      .map(this.setToken)
+      .switchMap(() => this.userService.get(email.split('@')[0]))
+      .map(this.setUserData);
   }
 
   isLoggedIn() {
@@ -36,7 +35,7 @@ export class LoginService {
     return ls.getItem('token');
   }
 
-  set token(token) {
+  setToken(token) {
     ls.setItem('token', token);
   }
 
@@ -44,7 +43,7 @@ export class LoginService {
     return ls.getItem('userData');
   }
 
-  private set userData(userData) {
+  private setUserData(userData) {
     ls.setItem('userData', userData);
   }
 

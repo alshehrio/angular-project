@@ -1,6 +1,7 @@
-import { ProductService } from '../../../shared/services/product.service';
 import { Component, OnInit } from '@angular/core';
 import { DataTableResource } from 'angular-4-data-table/src';
+
+import { ProductService } from '../../../shared/services/product.service';
 
 @Component({
   selector: 'app-products',
@@ -16,10 +17,12 @@ export class ProductsComponent implements OnInit {
   constructor(private productService: ProductService) { }
 
   ngOnInit() {
-    this.productService.list().subscribe(items => {
-      this.itemsResource = new DataTableResource(items);
-      this.itemsResource.count().then(count => this.itemCount = count);
-    });
+    this.productService.list()
+      .take(1)
+      .subscribe(items => {
+        this.itemsResource = new DataTableResource(items);
+        this.itemsResource.count().then(count => this.itemCount = count);
+      });
   }
 
   reloadItems(params) {

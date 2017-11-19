@@ -1,7 +1,8 @@
-import { LoginService } from '../../../shared/services/login.service';
 import { Component } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+
+import { LoginService } from '../../../shared/services/login.service';
 
 @Component({
   selector: 'app-login-form',
@@ -15,9 +16,7 @@ export class LoginFormComponent {
 
   login(form: NgForm) {
     this.loginService.login(form.value.email, form.value.password)
-      .subscribe(
-        res => this.router.navigate([ this.route.snapshot.queryParams.redirect || '' ]),
-        //error => form.errors = error
-      );
+      .take(1)
+      .subscribe(res => this.router.navigateByUrl(this.route.snapshot.queryParams.redirect || '/'));
   }
 }
