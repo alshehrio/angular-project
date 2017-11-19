@@ -1,3 +1,4 @@
+import { ProductsComponent } from '../products/products.component';
 import 'rxjs/add/observable/combineLatest';
 import 'rxjs/add/operator/switchMap';
 import 'rxjs/add/operator/take';

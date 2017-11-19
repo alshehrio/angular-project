@@ -1,5 +1,4 @@
-import { CategoryService } from './services/category.service';
-import { ProductService } from './services/product.service';
+import { CustomFormsModule } from 'ng2-validation';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
@@ -8,8 +7,10 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { ProductCardComponent } from './components/product-card/product-card.component';
 import { AuthGuard } from './guards/auth.guard';
+import { CategoryService } from './services/category.service';
 import { HttpService } from './services/http.service';
 import { LoginService } from './services/login.service';
+import { ProductService } from './services/product.service';
 import { UserService } from './services/user.service';
 
 @NgModule({
@@ -17,7 +18,8 @@ import { UserService } from './services/user.service';
     BrowserModule,
     HttpModule,
     FormsModule,
-    NgbModule.forRoot()
+    NgbModule.forRoot(),
+    CustomFormsModule
   ],
   declarations: [
     ProductCardComponent
@@ -26,7 +28,8 @@ import { UserService } from './services/user.service';
     BrowserModule,
     FormsModule,
     ProductCardComponent,
-    NgbModule.forRoot().ngModule
+    NgbModule.forRoot().ngModule,
+    CustomFormsModule
   ],
   providers: [
     HttpService,

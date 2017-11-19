@@ -17,6 +17,8 @@ export class LoginFormComponent {
   login(form: NgForm) {
     this.loginService.login(form.value.email, form.value.password)
       .take(1)
-      .subscribe(res => this.router.navigateByUrl(this.route.snapshot.queryParams.redirect || '/'));
+      .switchMap(() => this.route.queryParamMap)
+      .map(params => params.get('redirectUrl'))
+      .subscribe(redirectUrl => this.router.navigateByUrl(redirectUrl));
   }
 }

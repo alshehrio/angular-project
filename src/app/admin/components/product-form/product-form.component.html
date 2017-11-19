@@ -16,10 +16,12 @@
       #price="ngModel"
       required pattern="\d{1,}(\.\d)?\d{0,}"
       [(ngModel)]="product.price"
+      [gte]="0"
     >
     <ng-container *ngIf="price.touched && price.invalid">
       <div class="alert alert-danger" *ngIf="price.errors.required">Price is Required</div>
       <div class="alert alert-danger" *ngIf="price.errors.pattern">Price is not Valid</div>
+      <div class="alert alert-danger" *ngIf="price.errors.gte">Price Can not be Less than 0</div>
     </ng-container>
   </div>
 
@@ -36,7 +38,18 @@
 
   <div class="form-group">
     <label for="imageUrl">Image Url</label>
-    <input type="text" class="form-control" name="imageUrl" id="imageUrl" #imageUrl="ngModel" [(ngModel)]="product.imageUrl">
+    <input
+      type="text"
+      class="form-control"
+      name="imageUrl"
+      id="imageUrl"
+      #imageUrl="ngModel"
+      [(ngModel)]="product.imageUrl"
+      url
+    >
+    <ng-container *ngIf="imageUrl.touched && imageUrl.invalid">
+      <div class="alert alert-danger" *ngIf="imageUrl.errors.url">Not a Valid URL</div>
+    </ng-container>
   </div>
 
   <div class="card" style="width: 20rem;">
