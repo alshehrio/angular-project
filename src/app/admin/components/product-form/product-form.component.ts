@@ -43,13 +43,11 @@ export class ProductFormComponent implements OnInit, OnDestroy {
 
   submit() {
     this.productService.update(this.product.id, this.product)
-      .take(1)
       .subscribe(() => this.router.navigateByUrl('/manage-products'));
   }
 
   delete() {
     this.productService.delete(this.product.id)
-      .take(1)
       .subscribe(() => this.router.navigateByUrl('/manage-products'));
   }
 
